@@ -20,3 +20,8 @@ a {
 @tailwind utilities;
 
 
+.listPostBtn {
+  @apply inline-flex items-center justify-center rounded-xl hover:backdrop-brightness-75  active:backdrop-brightness-50 py-2 w-full;
+}
+
+

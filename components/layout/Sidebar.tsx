@@ -47,7 +47,7 @@ function Sidebar({ expand, setExpand }) {
                         path="/pages"
                         expand={expand} />
                 </ul>
-                <Shortcuts expand={expand} />
+                <Dropdown expand={expand} />
             </nav>
             <div onClick={() => setExpand(!expand)}
                 className={`${expand ? 'fixed' : 'hidden'} top-0 left-0 w-full h-screen bg-gray-900 opacity-40 z-40`} >
@@ -82,19 +82,19 @@ function SideButton({ icon, text, path, tooltip, expand }) {
 
 }
 
-function Shortcuts({ expand }) {
-    const [Shortcuts, setShortcuts] = useState(false);
+function Dropdown({ expand }) {
+    const [dropdown, setDropdown] = useState(false);
 
     return (
         <div className="hidden sm:flex flex-col m-2 group">
-            <button onClick={() => setShortcuts(!Shortcuts)} className={` w-full flex cursor-pointer flex-row items-center justify-between rounded-xl px-1 text-gray-500 hover:text-gray-700 hover:bg-gray-300`}>
-                <ChevronRightIcon className={`${Shortcuts ? 'rotate-90' : 'rotate-0'} duration-500 w-7 h-7`} />
+            <button onClick={() => setDropdown(!dropdown)} className={` w-full flex cursor-pointer flex-row items-center justify-between rounded-xl px-1 text-gray-500 hover:text-gray-700 hover:bg-gray-300`}>
+                <ChevronRightIcon className={`${dropdown ? 'rotate-90' : 'rotate-0'} duration-500 w-7 h-7`} />
                 <span className={`${expand ? 'sm:flex' : ''} hidden text-sm font-semibold`}>SHORTCUTS</span>
                 <LightningBoltIcon className="w-6 h-6" />
             </button>
-            <div className={`${Shortcuts ? 'sm:flex' : 'hidden'} ${expand ? 'm-4' : 'flex-col my-4'} items-center `}>
+            <div className={`${dropdown ? 'sm:flex' : 'hidden'} ${expand ? 'm-4' : 'flex-col my-4'} items-center `}>
                 <MusicNoteIcon className="w-6 h-6 mr-2" />
-                <p className={expand ? 'text-base' : ' text-[10px]'}>Shortcut 1</p>
+                <p className={expand ? 'text-base' : ' text-[10px]'}>dropdown 1</p>
             </div>
             <span className={`${expand ? 'hidden' : 'absolute'} w-auto p-2 m-2 min-w-max left-14 rounded-md shadow-md text-white bg-gray-900 text-xs font-bold transition-all duration-100 scale-0 group-hover:scale-100 origin-left`}>
                 Shortcuts ⚡

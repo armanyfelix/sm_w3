@@ -1,4 +1,4 @@
-import { ChatIcon, DotsHorizontalIcon, GiftIcon, LinkIcon, ReplyIcon, ThumbDownIcon, ThumbUpIcon } from "@heroicons/react/outline";
+import { ChatAltIcon, ChatIcon, DotsHorizontalIcon, GiftIcon, LinkIcon, ReplyIcon, ThumbDownIcon, ThumbUpIcon, UploadIcon } from "@heroicons/react/outline";
 import UserCircleIcon from "@heroicons/react/outline/UserCircleIcon";
 import Gun from "gun";
 
@@ -50,43 +50,50 @@ function ListView({ data }: { data: any }) {
 
 
   return (
-    <div className="text-white mt-10 flex flex-col items-center max-w-xl ">
-      <div className="flex p-2 ">
-        <UserCircleIcon className="w-16 h-16 mr-2" />
+    <div className="text-white shadow-lg backdrop-blur-l bg-opacity-30 bg-neutral-600 rounded-md mt-5 flex flex-col items-center">
+      <div className="flex p-2 justify-between m-5 ">
+        <UserCircleIcon className="w-20 h-20 mr-2" />
         <div>
           <p>
             <span className="mr-1 font-semibold text-lg">{data.name}</span>
-            <span className=" font-light text-ellipsis text-stone-200 italic ">{data.name.toLowerCase().split(' ').splice(2, 3).join('')}</span>
+            {/* <span className=" font-light text-ellipsis text-stone-200 italic ">{data.name.toLowerCase().split(' ').splice(2, 3).join('')}</span> */}
+            <span className="font-light text-ellipsis text-stone-200 italic "> - created date</span>
           </p>
           <p>{data.description.split('').splice(0, 100)}</p>
         </div>
       </div>
-      <div className="">
-        <img src={data.imageUrl} alt="content" className="w-[28rem] h-[34rem]" />
+      <div className="w-[30rem] h-auto bg-slate-600">
+        <img src={data.imageUrl} alt="content" className="w-full h-auto" />
       </div>
-      <div className="flex  w-full  justify-evenly m-2 ">
-        <button className=" inline-flex items-center ">
+      <div className="flex w-full justify-between space-x-1 py-4 px-4  ">
+        <button className="listPostBtn">
           <ThumbUpIcon className="w-7 h-7" />
-          <span className="text-sm">10 mil</span>
+          <span className="text-sm pl-1">10 mil</span>
         </button>
-        <button className=" inline-flex items-center ">
+        <button className="listPostBtn">
           <ThumbDownIcon className="w-7 h-7" />
-          <span className="text-sm">54</span>
+          <span className="text-sm pl-1">54</span>
         </button>
-        <button className=" ">
+        <button className="listPostBtn">
           <GiftIcon className="w-7 h-7" />
+          <span className="text-sm pl-1"> 54</span>
         </button>
-        <button className=" inline-flex items-center ">
-          <ChatIcon className="w-7 h-7" />
-          <span className="text-sm">423</span>
+        <button className="listPostBtn">
+          <UploadIcon className="w-7 h-7" />
+          <span className="text-sm pl-1"> 43</span>
         </button>
-        <button className=" inline-flex items-center ">
-          <img src="https://img.icons8.com/external-outline-juicy-fish/28/FFFFFF/external-share-arrows-outline-outline-juicy-fish.png" />
-          <span className="text-sm">994</span>
+        <button className="listPostBtn">
+          <ChatAltIcon className="w-7 h-7" />
+          <span className="text-sm pl-1">423</span>
         </button>
-        <button className=" inline-flex items-center ">
-          <DotsHorizontalIcon className="w-7 h-7" />
+        <button className="listPostBtn">
+          <ReplyIcon className="w-7 h-7" />
+          <span className="text-sm pl-1"> 994</span>
         </button>
+        <button className="listPostBtn">
+          <DotsHorizontalIcon className="w-7 h-7 rotate-90" />
+        </button>
+
 
       </div>
     </div>

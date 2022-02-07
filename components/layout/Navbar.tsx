@@ -18,7 +18,7 @@ function Navbar({ setView }: any) {
 
   return (
     <div className="flex bg-gray-800 border-t-[1px] border-zinc-600 justify-between">
-      <div className="bg-zinc-600 p-2 m-0 flex items-center">
+      <div className=" p-2 m-0 flex items-center">
         <FilterIcon className="h-6 w-6" />
         <div className="ml-2 space-x-2 text-white">
           {
