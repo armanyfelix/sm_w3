@@ -2,7 +2,7 @@ import { UserCircleIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 
 
-function GridView({ data }: { data: any }) {
+function GridCard({ data }: { data: any }) {
   return (
     <>
       <div className="bg-slate-60 rounded-md flex flex-col shadow-lg m-2  justify-between ">
@@ -29,4 +29,4 @@ function GridView({ data }: { data: any }) {
   )
 }
 
-export default GridView;
+export default GridCard;

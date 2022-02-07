@@ -3,7 +3,7 @@ import UserCircleIcon from "@heroicons/react/outline/UserCircleIcon";
 import Gun from "gun";
 
 
-function ListView({ data }: { data: any }) {
+function ListCard({ data }: { data: any }) {
 
 
 
@@ -45,8 +45,6 @@ function ListView({ data }: { data: any }) {
   posts.forEach((p) => {
     db.get(p.id).put(p);
   })
-
-  const postNodes = posts.map(b => db.get(b.uuid))
 
 
   return (
@@ -100,4 +98,4 @@ function ListView({ data }: { data: any }) {
   )
 }
 
-export default ListView
+export default ListCard;

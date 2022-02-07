@@ -3,7 +3,9 @@ import SearchIcon from "@heroicons/react/outline/SearchIcon"
 import { BellIcon, ChatIcon, PencilIcon, UserCircleIcon } from "@heroicons/react/outline"
 import Create from "../Create";
 import { useState } from "react";
-import ChatDrop from "../chat/dropdown";
+import ChatDrop from "../chat/chatMenu";
+import NotificationsMenu from "../NotificationsMenu";
+import UserMenu from "../userMenu";
 
 
 
@@ -41,26 +43,16 @@ function Header() {
           !username ? (
             <ul className=" flex list-none items-center space-x-2">
               <li>
-                <button onClick={() => { setCreate(!create) }} className="p-2 bg-red-600 rounded-lg ">
-                  <p className="h-6 px-2 font-mono flex items-center">Create</p>
-                </button>
-                {/* {create && <Create />} */}
+                <Create />
               </li>
               <li>
-                <button onClick={() => setChat(!chat)} className="p-2 bg-gray-600 rounded-lg " >
-                  <ChatIcon className="w-6 h-6" />
-                </button>
-                {chat && <ChatDrop/>}
+                <ChatDrop/>
               </li>
               <li>
-                <button className="p-2 bg-gray-600 rounded-lg " >
-                  <BellIcon className="w-6 h-6" />
-                </button>
+                <NotificationsMenu/>
               </li>
               <li>
-                <button className="">
-                  <img src={`https://avatars.dicebear.com/api/:avataaars/${username ? username : 'armany8'}.svg`} className="w-9 h-9" />
-                </button>
+                <UserMenu/>
               </li>
 
             </ul>
