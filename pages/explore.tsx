@@ -1,13 +1,13 @@
+import Layout from "../components/layout"
 import Sidebar from "../components/layout/Sidebar"
 
 function Explore() {
   return (
-    <div>
-      <Sidebar/>
+    <Layout>
       <h1>
         im exploring on acid mother fuckerrrrs
       </h1>
-    </div>
+    </Layout>
   )
 }
 

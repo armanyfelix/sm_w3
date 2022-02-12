@@ -46,7 +46,7 @@ function Create() {
 
   const postNodes = posts.map(b => db.get(b.uuid))
 
-  let [isOpen, setIsOpen] = useState(true)
+  let [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
     setIsOpen(false)

@@ -1,3 +1,21 @@
+
+/*--------------------------------------*/
+/*Custom properties                      */
+/*--------------------------------------*/
+
+:root {
+  --clr-dark: hsl(0, 0%, 20%);
+  --clr-light: hsl(0, 0%, 90%);
+  --clr-primary: hsl(0, 0%, 20%);
+}
+
+
+
+
+
+/*--------------------------------------*/
+/*Reset                                 */
+/*--------------------------------------*/
 html,
 body {
   padding: 0;
@@ -11,8 +29,47 @@ a {
   text-decoration: none;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+
+/* set up the body */
+
+body {
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* make images easier to worl with */
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+/* make form elements easier to work with */
+input,
+textarea,
+button,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefer-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @tailwind base;

@@ -22,8 +22,8 @@ function Navbar({ setView }: any) {
         <FilterIcon className="h-6 w-6" />
         <div className="ml-2 space-x-2 text-white">
           {
-            options.map((option) => (
-              <button className="bg-neutral-800 border-2 border-neutral-700 hover:bg-neutral-700 px-3 py-0.5 rounded-2xl">
+            options.map((option, i) => (
+              <button key={i} className="bg-neutral-800 border-2 border-neutral-700 hover:bg-neutral-700 px-3 py-0.5 rounded-2xl">
                 {option.label}
               </button>
             ))

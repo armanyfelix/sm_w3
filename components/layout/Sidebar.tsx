@@ -1,11 +1,13 @@
 import Link from 'next/link';
-import { InboxIcon, BookOpenIcon, TemplateIcon, ChevronRightIcon, LightningBoltIcon, MusicNoteIcon, ClipboardCheckIcon, } from '@heroicons/react/solid';
+import { InboxIcon, BookOpenIcon, TemplateIcon, ChevronRightIcon, LightningBoltIcon, MusicNoteIcon, ClipboardCheckIcon, SunIcon, } from '@heroicons/react/solid';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { GlobeAltIcon, GlobeIcon, HomeIcon } from '@heroicons/react/outline';
+import { useTheme } from 'next-themes';
 
 
 function Sidebar({ expand, setExpand }) {
+    const {theme, setTheme} = useTheme();
 
     return (
         <>
@@ -46,6 +48,13 @@ function Sidebar({ expand, setExpand }) {
                         tooltip="Pages 📚"
                         path="/pages"
                         expand={expand} />
+                </ul>
+                <ul>
+                    <li>
+                        <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+                            <SunIcon className="w-8 h-8" />
+                        </button>
+                    </li>
                 </ul>
                 <Dropdown expand={expand} />
             </nav>
