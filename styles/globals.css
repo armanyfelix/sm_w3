@@ -81,4 +81,12 @@ select {
   @apply inline-flex items-center justify-center rounded-xl hover:backdrop-brightness-75  active:backdrop-brightness-50 py-2 w-full;
 }
 
+.sideNav li {
+ @apply w-full flex justify-center items-center;
+}
+
+.headerBtn {
+  @apply inline-flex justify-center w-full p-2 text-sm font-medium text-white bg-black rounded-xl bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75;
+}
+
 

@@ -1,23 +1,22 @@
 import Link from 'next/link';
-import { InboxIcon, BookOpenIcon, TemplateIcon, ChevronRightIcon, LightningBoltIcon, MusicNoteIcon, ClipboardCheckIcon, SunIcon, } from '@heroicons/react/solid';
+import { ChevronRightIcon, LightningBoltIcon, MusicNoteIcon, SunIcon } from '@heroicons/react/solid';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { GlobeAltIcon, GlobeIcon, HomeIcon } from '@heroicons/react/outline';
+import { GlobeIcon, HomeIcon, LibraryIcon } from '@heroicons/react/outline';
 import { useTheme } from 'next-themes';
 
 
 function Sidebar({ expand, setExpand }) {
-    const {theme, setTheme} = useTheme();
 
     return (
         <>
-            <nav className={`fixed z-50 transition-width duration-700 bg-light dark:bg-gray-800 sm:top-0 bottom-0 sm:h-screen w-full  ${expand ? 'sm:w-56' : 'sm:w-14'}`}>
-                <ul className={`sm:flex-col w-full sm:space-y-1 list-none p-0 m-0 flex items-center`}>
-                    <div className="flex items-center w-full">
+            <aside className={`fixed z-50 transition-width duration-700 bg-light dark:bg-gray-800 sm:top-0 bottom-0 sm:h-screen w-full  ${expand ? 'sm:w-56' : 'sm:w-14'}`}>
+                <div className={`sm:flex-col w-full min-w-full sm:space-y-1 flex`}>
+                    <div className="hidden sm:flex items-center w-full">
                         <h1 className={`${expand ? '' : 'hidden'} ml-5 text-2xl font-serif w-full`}>SM_W3</h1>
                         <ExpandBtn expand={expand} setExpand={setExpand} />
                     </div>
-                    <div className={`${expand ? '' : 'ml-2'} hidden sm:inline w-full`}>
+                    <div className="sm:flex hidden w-full justify-center">
                         <SideButton
                             text="Home"
                             icon={<HomeIcon className="w-8 h-8" />}
@@ -26,15 +25,16 @@ function Sidebar({ expand, setExpand }) {
                             expand={expand}
                         />
                     </div>
-                    <SideButton
-                        text="Explore"
-                        icon={<GlobeIcon className="w-8 h-8" />}
-                        tooltip="Explore 📬"
-                        path="/explore"
-                        expand={expand}
-                    />
-
-                    <div className="sm:hidden w-full">
+                    <div className="w-full flex justify-center">
+                        <SideButton
+                            text="Explore"
+                            icon={<GlobeIcon className="w-8 h-8" />}
+                            tooltip="Explore 📬"
+                            path="/explore"
+                            expand={expand}
+                        />
+                    </div>
+                    <div className="sm:hidden flex w-full justify-center">
                         <SideButton
                             text="Home"
                             icon={<HomeIcon className="w-8 h-8" />}
@@ -42,22 +42,17 @@ function Sidebar({ expand, setExpand }) {
                             path="/"
                             expand={expand} />
                     </div>
-                    <SideButton
-                        text="Pages"
-                        icon={<BookOpenIcon className="w-8 h-8" />}
-                        tooltip="Pages 📚"
-                        path="/pages"
-                        expand={expand} />
-                </ul>
-                <ul>
-                    <li>
-                        <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
-                            <SunIcon className="w-8 h-8" />
-                        </button>
-                    </li>
-                </ul>
+                    <div className="w-full flex justify-center">
+                        <SideButton
+                            text="Library"
+                            icon={<LibraryIcon className="w-8 h-8" />}
+                            tooltip="Library 📚"
+                            path="/library"
+                            expand={expand} />
+                    </div>
+                </div>
                 <Dropdown expand={expand} />
-            </nav>
+            </aside>
             <div onClick={() => setExpand(!expand)}
                 className={`${expand ? 'fixed' : 'hidden'} top-0 left-0 w-full h-screen bg-gray-900 opacity-40 z-40`} >
             </div>
@@ -66,9 +61,9 @@ function Sidebar({ expand, setExpand }) {
 }
 
 
+export default Sidebar
 
-
-function SideButton({ icon, text, path, tooltip, expand }) {
+const SideButton = ({ icon, text, path, tooltip, expand }) => {
 
     const router = useRouter();
 
@@ -76,9 +71,15 @@ function SideButton({ icon, text, path, tooltip, expand }) {
         <li className={`${expand ? 'px-2' : 'sm:w-12'} w-full flex items-center group`}>
             <Link href={path}>
                 <a className={`p-2 flex w-full items-center no-underline rounded-xl justify-center sm:justify-start transition duration-500
-                    ${router.pathname === path ? 'bg-gray-600 text-gray-300 hover:text-gray-100' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-300'}`}>
+                    ${router.pathname === path ?
+                        'bg-gray-300 text-gray-700 hover:text-gray-500'
+                        :
+                        'text-gray-400 hover:text-gray-300 hover:bg-gray-600'
+                    }`}>
                     {icon}
-                    <span className={` ${expand ? 'sm:inline' : ''} ml-2 hidden`}>{text}</span>
+                    <span className={` ${expand ? 'sm:inline' : ''} ml-2 hidden`}>
+                        {text}
+                    </span>
                 </a>
             </Link>
             {/* Tooltip */}
@@ -88,10 +89,9 @@ function SideButton({ icon, text, path, tooltip, expand }) {
             </span>
         </li>
     )
-
 }
 
-function Dropdown({ expand }) {
+const Dropdown = ({ expand }) => {
     const [dropdown, setDropdown] = useState(false);
 
     return (
@@ -112,7 +112,7 @@ function Dropdown({ expand }) {
     )
 }
 
-function ExpandBtn({ expand, setExpand }) {
+const ExpandBtn = ({ expand, setExpand }) => {
     return (
         <div className=" hidden sm:flex group justify-self-end justify-end p-2  w-full">
             <button className={`hover:bg-gray-500 p-2 rounded-xl transition duration-500 ${expand ? 'rotate-180' : 'rotate-0'}`}
@@ -134,7 +134,5 @@ function ExpandBtn({ expand, setExpand }) {
             </span>
         </div>
     )
-
 }
 
-export default Sidebar

@@ -6,6 +6,8 @@ import { useState } from "react";
 import ChatDrop from "../chat/chatMenu";
 import NotificationsMenu from "../NotificationsMenu";
 import UserMenu from "../userMenu";
+import { ChevronDownIcon } from "@heroicons/react/solid";
+import ConfigMenu from "../ConfigMenu";
 
 
 
@@ -39,39 +41,42 @@ function Header() {
       </div>
 
       <div className="w-1/3 flex items-center justify-end">
-        {
-          !username ? (
-            <ul className=" flex list-none items-center space-x-2">
-              <li>
-                <Create />
-              </li>
-              <li>
-                <ChatDrop/>
-              </li>
-              <li>
-                <NotificationsMenu/>
-              </li>
-              <li>
-                <UserMenu/>
-              </li>
-
-            </ul>
-          ) : (
-            <div className="mr-2 flex font-mono text-lg font-semibold tracking-tighter space-x-4">
-              <li>
-                <Link href="/newUser">
-                  <a>Join</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/auth">
-                  <a>Log In</a>
-                </Link>
-              </li>
-            </div>
-          )
-        }
-
+        <nav>
+          {
+            !username ? (
+              <ul className=" flex list-none items-center space-x-2">
+                <li>
+                  <Create />
+                </li>
+                <li>
+                  <ChatDrop />
+                </li>
+                <li>
+                  <NotificationsMenu />
+                </li>
+                <li>
+                  <UserMenu />
+                </li>
+                <li>
+                  <ConfigMenu />
+                </li>
+              </ul>
+            ) : (
+              <ul className="mr-2 flex font-mono text-lg font-semibold tracking-tighter space-x-4">
+                <li>
+                  <Link href="/newUser">
+                    <a>Join</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/auth">
+                    <a>Log In</a>
+                  </Link>
+                </li>
+              </ul>
+            )
+          }
+        </nav>
       </div>
 
     </header>

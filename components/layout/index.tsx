@@ -26,7 +26,6 @@ function Layout({ children, title = 'sm_w3', description = "ltimate descentraliz
             <Sidebar expand={expand} setExpand={setExpand} />
             <div className="ml-0 flex flex-col z-40 sm:ml-14">
                 <Header/>
-                {/* <Navbar/> */}
                 <main>
                     {children}
                 </main>

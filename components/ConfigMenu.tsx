@@ -1,15 +1,19 @@
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment, useEffect, useRef, useState } from 'react'
-import { ChevronDownIcon } from '@heroicons/react/solid'
-import { ChatIcon } from '@heroicons/react/outline'
+import { ChevronDownIcon, MoonIcon, SunIcon } from '@heroicons/react/solid'
+import { BellIcon, ChatIcon } from '@heroicons/react/outline'
+import { useTheme } from 'next-themes'
 
-export default function chatMenu() {
+function ConfigMenu() {
+
+  const { theme, setTheme } = useTheme();
+
   return (
     <div>
       <Menu as="div">
         <div>
           <Menu.Button className="headerBtn">
-            <ChatIcon className="w-6 h-6" />
+            <ChevronDownIcon className="w-6 h-6" />
           </Menu.Button>
         </div>
         <Transition
@@ -21,7 +25,7 @@ export default function chatMenu() {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-32 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="absolute right-20 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
               <Menu.Item>
                 {({ active }) => (
@@ -109,6 +113,29 @@ export default function chatMenu() {
                   </button>
                 )}
               </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                    className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                  >
+                    {theme === 'light' ? (
+                      <SunIcon
+                        className="w-5 h-5 mr-2 text-yellow-500"
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      <MoonIcon
+                        className="w-5 h-5 mr-2 text-slate-600"
+                        aria-hidden="true"
+                      />
+                    )}
+                    {
+                      theme === 'light' ? 'Light Mode' : 'Dark Mode'
+                    }
+                  </button>
+                )}
+              </Menu.Item>
             </div>
             <div className="px-1 py-1">
               <Menu.Item>
@@ -139,6 +166,8 @@ export default function chatMenu() {
     </div>
   )
 }
+
+export default ConfigMenu
 
 function EditInactiveIcon(props) {
   return (
@@ -361,4 +390,3 @@ function DeleteActiveIcon(props) {
     </svg>
   )
 }
-

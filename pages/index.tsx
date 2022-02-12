@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { useState } from "react";
 import Layout from "../components/layout/index";
 import NestedLayout from "../components/layout/NestedLayout";
 import ListView from "../components/home/ListCard";
@@ -6,10 +6,13 @@ import GridView from "../components/home/GridCard";
 import Navbar from "../components/layout/Navbar";
 
 
+
 function Home({ data }: { data: any }) {
+
   const [view, setView] = useState('list');
+
   return (
-    <>
+    <Layout>
       <Navbar setView={setView} />
       <div className="flex bg-gradient-to-tl to-cyan-700 via-indigo-700 from-purple-700 justify-center">
         <div>
@@ -35,7 +38,7 @@ function Home({ data }: { data: any }) {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }
 
@@ -54,12 +57,12 @@ export async function getStaticProps() {
   }
 }
 
-Home.getLayout = function getLayout(home: ReactElement, setView: any) {
-  return (
-    <Layout>
-      <NestedLayout setView={setView}>{home}</NestedLayout>
-    </Layout>
-  )
-}
+// Home.getLayout = function getLayout(home: ReactElement, setView: any) {
+//   return (
+//     <Layout home>
+//       <NestedLayout setView={setView}>{home}</NestedLayout>
+//     </Layout>
+//   )
+// }
 
 export default Home
